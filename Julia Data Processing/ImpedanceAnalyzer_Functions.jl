@@ -1,8 +1,29 @@
 
-using TDMSReader, Gtk, PyPlot
+using TDMSReader, Gtk, Plots, StatsPlots
 
-FilePath = open_dialog("Pick a file")
+struct SingleRead
+    TestParams
+    ImpedanceData
+    GainData
+    CurrentTimeDomain
+    VoltageTimeDomain
+end
 
+struct FreqSweepRead
+    FreqVec
+    ZMagVec
+    ZPhaseVec
+    GainData
+    TestParams
+end
+
+struct StatsRead
+    ImpedanceData
+    ZPhaseArray
+    ZMagArray
+    GainData
+    TestParams
+end
 
 function UnpackSingleRead()
     UnpackSingleRead(open_dialog("Pick a file"))
@@ -19,7 +40,7 @@ function UnpackSingleRead(FilePath)
 
     TestParams =  AllData.groups["Test_Parameters"].props
 
-    return TestParams,ImpedanceData,GainData,CurrentTimeDomain,VoltageTimeDomain
+    return SingleRead(TestParams,ImpedanceData,GainData,CurrentTimeDomain,VoltageTimeDomain)
 
 end
 
@@ -37,13 +58,13 @@ function UnpackSweepRead(FilePath)
 
     TestParams =  AllData.groups["Test_Parameters"].props
 
-    return FreqVec,ZMagVec,ZPhaseVec,GainData,TestParams
+    return FreqSweepRead(FreqVec,ZMagVec,ZPhaseVec,GainData,TestParams)
 
 end
 
 
 
-function UnpackStatsRead(FilePath)
+function UnpackStatsRead()
     UnpackStatsRead(open_dialog("Pick a file"))
 end
 
@@ -57,8 +78,26 @@ function UnpackStatsRead(FilePath)
 
     TestParams =  AllData.groups["Test_Parameters"].props
 
-    return ImpedanceData,ZPhaseArray,ZMagArray,GainData,TestParams
+    return StatsRead(ImpedanceData,ZPhaseArray,ZMagArray,GainData,TestParams)
 
 end
 
+function PlotFreqSweep(DataIn::FreqSweepRead;XScaling= :identity, YScaling = :log10)
+    
+    XVec = [DataIn.FreqVec , DataIn.FreqVec]
+    YVec = [DataIn.ZMagVec , DataIn.ZPhaseVec]
+    plot(XVec,YVec,layout = (2,1),xscale = XScaling,label = ["|Z|" "∠Z"],legend = :best,lc=[:blue :green],size = (800,400),xlabel = "Frequency[Hz]",ylabel = ["|Z| [Ω]" "∠Z [deg.]"])
+    # , yscale = [YScaling , :identity],
+end
 
+
+
+function PolarDeg2Cart(R,Θ)
+    RealPart = real.(R.*exp.(im*π/180 .*Θ))
+    ImagPart = imag.(R.*exp.(im*π/180 .*Θ))
+    return RealPart, ImagPart
+end
+function PolarDeg2Complex(R,Θ)
+   
+    return (R.*exp.(im*π/180 .*Θ))
+end  
