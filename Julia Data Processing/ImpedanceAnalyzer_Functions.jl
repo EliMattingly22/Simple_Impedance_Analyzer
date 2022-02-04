@@ -77,7 +77,7 @@ function UnpackStatsRead(FilePath)
     GainData = AllData.groups["Calib_and_Gain"].props
 
     TestParams =  AllData.groups["Test_Parameters"].props
-
+    
     return StatsRead(ImpedanceData,ZPhaseArray,ZMagArray,GainData,TestParams)
 
 end
@@ -101,3 +101,11 @@ function PolarDeg2Complex(R,Θ)
    
     return (R.*exp.(im*π/180 .*Θ))
 end  
+
+function TmpUnpackStatsRead()
+    AllData = readtdms((open_dialog("Pick a file")))
+    ImpedanceData = AllData.groups["Impedance"].props
+    println(ImpedanceData)
+    
+   
+end

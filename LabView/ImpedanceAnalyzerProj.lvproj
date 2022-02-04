@@ -10,6 +10,7 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
+		<Item Name="Impedance_Analyzer_Main.vi" Type="VI" URL="../Impedance_Analyzer_Main.vi"/>
 		<Item Name="Impedance_Single.vi" Type="VI" URL="../Impedance_Single.vi"/>
 		<Item Name="Impedance_Single_Meas.vi" Type="VI" URL="../Impedance_Single_Meas.vi"/>
 		<Item Name="Impedance_SingleStats.vi" Type="VI" URL="../Impedance_SingleStats.vi"/>
@@ -267,15 +268,60 @@
 				<Item Name="Version To Dotted String.vi" Type="VI" URL="/&lt;vilib&gt;/_xctls/Version To Dotted String.vi"/>
 				<Item Name="XControlSupport.lvlib" Type="Library" URL="/&lt;vilib&gt;/_xctls/XControlSupport.lvlib"/>
 			</Item>
+			<Item Name="AdjustSamplingTime.vi" Type="VI" URL="../AdjustSamplingTime.vi"/>
 			<Item Name="LCR_OpenShortCompensation.vi" Type="VI" URL="../LCR_OpenShortCompensation.vi"/>
-			<Item Name="Linearly Spaced Array 2012 NIVerified.vi" Type="VI" URL="../../../LabviewGUI/waveform_generation/Linearly Spaced Array 2012 NIVerified.vi"/>
+			<Item Name="Linearly Spaced Array 2012 NIVerified.vi" Type="VI" URL="../LabView_V20/ImpedanceAnalyzerProj Folder/Users/MPI/Documents/GitHub/LabviewGUI/waveform_generation/Linearly Spaced Array 2012 NIVerified.vi"/>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
 			<Item Name="Make_file_path.vi" Type="VI" URL="../Make_file_path.vi"/>
 			<Item Name="nilvaiu.dll" Type="Document" URL="nilvaiu.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="Pick_Freq.vi" Type="VI" URL="../Pick_Freq.vi"/>
+			<Item Name="Stats_File_Name_String.vi" Type="VI" URL="../Stats_File_Name_String.vi"/>
+			<Item Name="ZMatrix2StatsCluster.vi" Type="VI" URL="../ZMatrix2StatsCluster.vi"/>
 		</Item>
-		<Item Name="Build Specifications" Type="Build"/>
+		<Item Name="Build Specifications" Type="Build">
+			<Item Name="Impedance_Analyzer_Main" Type="EXE">
+				<Property Name="App_copyErrors" Type="Bool">true</Property>
+				<Property Name="App_INI_aliasGUID" Type="Str">{185F9B02-31C6-4373-8086-30FF82FF923F}</Property>
+				<Property Name="App_INI_GUID" Type="Str">{D097EB80-6901-4F1E-A5ED-F482E35414C4}</Property>
+				<Property Name="App_serverConfig.httpPort" Type="Int">8002</Property>
+				<Property Name="App_serverType" Type="Int">0</Property>
+				<Property Name="Bld_autoIncrement" Type="Bool">true</Property>
+				<Property Name="Bld_buildCacheID" Type="Str">{8F30F1E7-8D1E-4E15-A707-C2E39C4BF26D}</Property>
+				<Property Name="Bld_buildSpecName" Type="Str">Impedance_Analyzer_Main</Property>
+				<Property Name="Bld_excludeInlineSubVIs" Type="Bool">true</Property>
+				<Property Name="Bld_excludeLibraryItems" Type="Bool">true</Property>
+				<Property Name="Bld_excludePolymorphicVIs" Type="Bool">true</Property>
+				<Property Name="Bld_localDestDir" Type="Path">../builds/NI_AB_PROJECTNAME/Impedance_Analyzer_Main</Property>
+				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
+				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
+				<Property Name="Bld_previewCacheID" Type="Str">{5670575D-83BB-4CB0-9FEC-662250F4EA08}</Property>
+				<Property Name="Bld_version.build" Type="Int">1</Property>
+				<Property Name="Bld_version.major" Type="Int">1</Property>
+				<Property Name="Destination[0].destName" Type="Str">ImpedanceAnalyzer.exe</Property>
+				<Property Name="Destination[0].path" Type="Path">../builds/NI_AB_PROJECTNAME/Impedance_Analyzer_Main/ImpedanceAnalyzer.exe</Property>
+				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
+				<Property Name="Destination[0].type" Type="Str">App</Property>
+				<Property Name="Destination[1].destName" Type="Str">Support Directory</Property>
+				<Property Name="Destination[1].path" Type="Path">../builds/NI_AB_PROJECTNAME/Impedance_Analyzer_Main/data</Property>
+				<Property Name="DestinationCount" Type="Int">2</Property>
+				<Property Name="Source[0].itemID" Type="Str">{FBF037AB-0D1E-4E8F-A51D-E8C09F181C4F}</Property>
+				<Property Name="Source[0].type" Type="Str">Container</Property>
+				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
+				<Property Name="Source[1].itemID" Type="Ref">/My Computer/Impedance_Analyzer_Main.vi</Property>
+				<Property Name="Source[1].sourceInclusion" Type="Str">TopLevel</Property>
+				<Property Name="Source[1].type" Type="Str">VI</Property>
+				<Property Name="SourceCount" Type="Int">2</Property>
+				<Property Name="TgtF_companyName" Type="Str">Partners HealthCare</Property>
+				<Property Name="TgtF_fileDescription" Type="Str">Impedance_Analyzer_Main</Property>
+				<Property Name="TgtF_internalName" Type="Str">Impedance_Analyzer_Main</Property>
+				<Property Name="TgtF_legalCopyright" Type="Str">Copyright © 2022 Partners HealthCare</Property>
+				<Property Name="TgtF_productName" Type="Str">Impedance_Analyzer_Main</Property>
+				<Property Name="TgtF_targetfileGUID" Type="Str">{91FF8945-5E24-40D9-ABE6-50F7A6DD32EE}</Property>
+				<Property Name="TgtF_targetfileName" Type="Str">ImpedanceAnalyzer.exe</Property>
+				<Property Name="TgtF_versionIndependent" Type="Bool">true</Property>
+			</Item>
+		</Item>
 	</Item>
 </Project>

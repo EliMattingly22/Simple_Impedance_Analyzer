@@ -1,7 +1,4 @@
 include("ImpedanceAnalyzer_Functions.jl")
-using Plots, StatsPlots
-using CSV
-
 
 function MagPhaseBoxDotImpedanceStats_AgainstKnown(ZMagVec::Vector,ZPhaseVec::Vector,KnownImpedance::Complex,newPlot,labelVal,CVal)
     
@@ -100,3 +97,4 @@ KnownImpedanceVec = [PolarDeg2Complex(1651,-89.98) ,PolarDeg2Complex(4458,-89.11
 
 NameVec = ["10nF" , "3.9nF" , "22nF" , "80nF"]
 ColorVec = ["blue" , "red" , "green" , "purple"]
+
