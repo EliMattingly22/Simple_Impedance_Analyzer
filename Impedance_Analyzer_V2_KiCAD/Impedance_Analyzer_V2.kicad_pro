@@ -350,7 +350,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "Impedance_Analyzer.kicad_pro",
+    "filename": "Impedance_Analyzer_V2.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -384,7 +384,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "Impedance_Analyzer_V2.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""

@@ -12,19 +12,20 @@ In this current configuration:
 * Perform frequency sweeps on log or linear spacing
 * If a battery-powered computer and DAQ is used, the entire measurement apparatus can be both portable and floating.
 
-TODO: Photograph of board
+![](BoardPhoto.jpg)
+
+
+
+![](FrontPage_Aug2022.png)
+
 
 TODO: Accuracy plot
+# Operating Principle
+This circuit uses the "auto-balancing bridge" technique. If you are curious/want to play around with the circuit you can see the LTSPICE schematic. 
 
-TODO: Screenshot of GUI
-
-
-
-# Basic Operation
 
 It is worth reading the [Keysight impedance measurement handbook](https://www.keysight.com/us/en/assets/7018-06840/application-notes/5950-3000.pdf) or TI's reference design for an LCR meter front-end for an overview of measurement techniques. 
 
-This circuit uses the "auto-balancing bridge" technique. If you are curious/want to play around with the circuit you can see the LTSPICE schematic.
 
 The current through the DUT is (ideally) the same as the current in the shunt resistor, so the impedance is V(DUT) / (V(Shunt)/R(Shunt)). 
 
@@ -32,8 +33,84 @@ The current through the DUT is (ideally) the same as the current in the shunt re
 
 The precision of the circuit is dominated by the shunt resistors and gain accuracy of the INAs. Error in any of these will linearly cause an error in the calculated impedance. If they are stable over time, they can conceivably be calibrated with a high tolerance (e.g. 0.01%) reference resistor, though that has not been included in the software. 
 
+If the shunt resistor is off by some value, *X* (where 1.01 would be 1% higher than nominal), the current would be reported as I<sub>0</sub>**X* where I<sub>0</sub> is the actual current. 
+
+The noise performance of the INAs isn't great, but the FET inputs have extremely low bias currents, and low current noise, which are necessary if high impedance loads are attached. The noise should add an incoherent error, so by averaging for longer, this can be mitigated. 
+
 The parasitic elements can be accounted for by taking an open/short measurement. See sect. 4.3.2 in the impedance measurement handbook
 
-# Bill of materials (key items)
+# Operation instructions
+## Setup
+The device should be plugged in with a four-wire (Kelvin) probe attached. On the probe there will be two pairs of leads, each connected to a clamp (typically one pair is red, one is black). The two BNC connections on the red lead should be plugged into the "HPot" and "HCur" connectors, and the BNCs on the black probe should be connected to "LPot" and "HPot" connectors. 
+
+Plug in the power and make sure the LEDs next to the "+5V" and "-5V" are illuminated. 
+
+The DAQ should be plugged in via the BNC connectors and however they are connected, those outputs/inputs are selected on the front page of the Labview GUI.
+
+Also on the front page, set the sampling rate to the maximum allowable (see documentation for your DAQ). Set the sampling time to be >10 periods of whatever frequency you are testing at. Longer gives better noise performance.
+
+For the shunt resistor, use the value most similar to the load you are measuring. Use J13/14 to select the shunt resistor. 
+
+Set the series resistor before the load (R9/24) to the same value as the shunt resistor using J17.
+![](SavingCluster.png)
+* For the saving cluster the Fine Name String will be the identifier in the file name.
+* Save path is the directory it will be saved within
+* Experiment title is a string added to the metadata
+* Meta-data array is an array that the user can fill in as desired. It just goes into meta-data as-is. For example, if you are measuring the turns on an inductor vs inductance, you could enter the turn count in this spot and then afterwards when processing the data it would already be saved. 
+
+![](TestParams.png)
+* **Test Freq:** This is the frequency the impedance is measured at
+* **Output Signal Amp:** This is the waveform amplitude the DAQ outputs. If this is too low, SNR is sacrificed, if it is too high, the waveform can clip. Check the debugging cluster to ensure the amplitude of the voltage monitor and current monitor arent clipping (i.e. they are less than 7 V or so)
+* **Sampling time:** Time of acquisition in seconds. Should be long enough for 10 or so periods of the output waveform. More improves SNR. 
+* **Sampling Rate:** Sampling rate in Hz. should be maximum allowable.
+* **Output Channel:** The channel that goes into the Voltage Input BNC (top left in photo above)
+* **Current Channel:** The channel that comes from the current sense BNC (Bottom left in photo above)
+* **Voltage channel:** The channel that comes from the voltage sense BNC (middle left in photo above)
+* **Trigger channel:** This should be set to the output start trigger, for example "/Dev2/ao/StartTrigger"
+* **Number of runs:** this is the number of times the acquisition will be repeated and averaged.
+
+![](LCR_Params.png)
+* **R_Shunt:** The shunt resistor value (R14/18)
+* **Rg_Vmon:** The gain-setting resistor for the voltage monitor (R12 or R8) 
+* **Rg_Imon:** The gain-setting resistor for the current monitor (R11 or R7) 
+* **ESL_Cal:** This value is set by the short circuit compensation and is enabled by the UseCorrection boolean
+* **ESR_Cal:** This value is set by the short circuit compensation and is enabled by the UseCorrection boolean
+* **Cp_Cal:** This value is set by the open circuit compensation and is enabled by the UseCorrection boolean
+* **Rp_Cal:** This value is set by the open circuit compensation and is enabled by the UseCorrection boolean
+
+* **UseCorrection:** enables the short/open compensation values. Typically set to TRUE (green illuminated)
+
+
+## Calibration
+![](OpenShortComp_Aug2022.png)
+
+Set the equipment up to measure your load, and short the clips together. Next, go to the Short/Open compensation tab and press the "Acquire short" button. Open the clips and then do the open compensation.
+
+## Measure load
+
+Use the last page to do a single impedance measurement and ensure the load is similar to expected. Then use the stats page or freq sweep depending on what you want. 
+
+## List of jumpers & their purpose
+* J15/16 low-pass filters for the input. These clean the analog signal from the DAQ. They can generally be set to the highest frequency that the user plans to measure. Removing the jumper disconnects the filtering entirely.
+
+* J10: The current monitor gain selection
+* J12: Voltage monitor gain selection
+* J13/14: Shunt resistor selection
+* J17: Series resistor selection. This resistor in series with the load helps stability and makes the system more balanced. The resistor value should match the shunt resistor value.
+
+
+
+# If you are having errors:
+1) Make sure the channels are selected properly
+2) Make sure BOTH sides of the clips are on the load
+3) Make sure the BNCs are properly attached
+4) The LEDs should be illuminated
+5) The amplitude should be sufficiently low that it doesn't saturate the inputs/clip
+
+
+
+
+
+
 
 

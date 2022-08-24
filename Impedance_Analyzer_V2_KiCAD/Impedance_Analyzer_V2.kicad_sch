@@ -2706,7 +2706,7 @@
     (property "Reference" "R15" (id 0) (at 111.76 52.07 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "50" (id 1) (at 113.03 57.15 90)
+    (property "Value" "100" (id 1) (at 113.03 57.15 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (id 2) (at 109.22 56.388 90)
@@ -2882,7 +2882,7 @@
     (property "Reference" "R17" (id 0) (at 236.22 71.12 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "50" (id 1) (at 237.49 76.2 90)
+    (property "Value" "100" (id 1) (at 237.49 76.2 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (id 2) (at 233.68 75.438 90)
@@ -3495,13 +3495,13 @@
       (reference "R14") (unit 1) (value "10k") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/753e6bfa-d8cb-4636-9cc1-37c0acfdfb21"
-      (reference "R15") (unit 1) (value "50") (footprint "Resistor_SMD:R_1206_3216Metric")
+      (reference "R15") (unit 1) (value "100") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/7927dbc1-ff57-4dce-a8fb-824e25958252"
       (reference "R16") (unit 1) (value "10k") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/ac61a9b4-2268-4b14-a597-ed5765e1c67d"
-      (reference "R17") (unit 1) (value "50") (footprint "Resistor_SMD:R_1206_3216Metric")
+      (reference "R17") (unit 1) (value "100") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/00000000-0000-0000-0000-000061c820b5"
       (reference "R18") (unit 1) (value "100") (footprint "Resistor_SMD:R_1206_3216Metric")
