@@ -1,4 +1,4 @@
-Nominal,Mag, Phase
+Nominal,Mag,Phase
 0.01 , 12.4e-3,15
 0.1, 95.4e-3,5.6
 1, 979.4e-3,4.6
