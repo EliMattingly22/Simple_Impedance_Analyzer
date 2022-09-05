@@ -134,3 +134,41 @@ PathArray = "100kHz\\10kOhmShunt\\" .* readdir("100kHz\\10kOhmShunt")
 PlotMeanErrorStd(PathArray,KnownImpedanceVec;LineColor = RGB(0,0,1),labelText = "Shunt =10 kΩ",NewPlot=false)
 
 
+############################
+
+Tmp = CSV.File("10kHz\\Agilent4263B_Meas - 10kHz - CMeas.txt")
+
+KnownCp = Tmp.Cp
+
+PathArray = reverse("10kHz\\CMeas_100OhmShunt\\" .* readdir("10kHz\\CMeas_100OhmShunt"))
+PlotMeanErrorStd_Cap(PathArray,KnownCp;LineColor = RGB(0,1,0),labelText = "Shunt =100 Ω",NewPlot=true)
+
+
+PathArray = "10kHz\\CMeas_10kOhmShunt\\" .* readdir("10kHz\\CMeas_10kOhmShunt")
+KnownCp = Tmp.Cp[1:6]
+
+PlotMeanErrorStd_Cap(PathArray,KnownCp;LineColor = RGB(0,0,1),labelText = "Shunt =10 kΩ",NewPlot=false)
+
+
+function PlotMeanErrorStd_Cap(PathArray,KnownCp;LineColor = :auto,labelText = "Label",NewPlot=true)
+    if NewPlot
+        scatter(;layout=(2,1))
+    end
+    CpVecStd =zeros(length(PathArray))
+    CpVec =zeros(length(PathArray))
+    for i in 1:length(KnownCp)
+
+        StatsData = UnpackStatsRead(PathArray[i])
+        CpVec[i] = StatsData.ImpedanceData["MeanCp"]
+        CpVecStd[i] = StatsData.ImpedanceData["StdCp"]
+    end
+
+    Error = 100 .* ((abs.(KnownCp) .- CpVec) ./ abs.(KnownCp))
+    CpVecStdNorm = abs.(CpVecStd) #./ abs.(KnownCp)
+    P = scatter!([abs.(KnownCp) abs.(KnownCp)],[abs.(Error) CpVecStdNorm], layout = (2,1),xscale = :log10,xlabel=["" "Cₚ [F]"],yscale = [:log10 :log10],ylabel = ["Percent Error" "Std. Dev(Cₚ) [F]"],legend = [false :bottomright],mc=[LineColor LineColor],label=labelText) 
+    xticks!(10. .^(-13:8))
+    yticks!(P.subplots[2],10. .^(-13:8))
+    # yticks!(10. .^(-8:8))
+    
+end
+

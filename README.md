@@ -2,9 +2,10 @@
 
 ## Purpose
 
-The impedance analyzer was designed as a low-cost, flexible platform to perform impedance measurement at arbitrary frequencies up to ~250kHz. The current infrastructure assumes the user has access to a National Instruments DAQ (e.g. NI-USB-6363), though similar digitizers would be similarly effective. 
+The impedance analyzer was designed as a low-cost, flexible, and accurate platform to perform impedance measurement at arbitrary frequencies up to ~250kHz. The current infrastructure assumes the user has access to a National Instruments DAQ (e.g. NI-USB-6363), though similar digitizers would be similarly effective. 
 
 In this current configuration:
+* About 0.1% Accuracy for large impedance and frequency ranges.
 * The LabView has an easy to use GUI
 * TDMS file saving
 * It can measure impedances from 10mOhms to 10MOhms, and by changing the shunt resistor values that range could be extended 
@@ -12,11 +13,14 @@ In this current configuration:
 * Perform frequency sweeps on log or linear spacing
 * If a battery-powered computer and DAQ is used, the entire measurement apparatus can be both portable and floating.
 
+
 ![](BoardPhoto.jpg)
 
 
 
 ![](FrontPage_Aug2022.png)
+![](FreqSweepScreen.png)
+![](StatsPage_Aug2022.png)
 
 ### Accuracy and noise (1 kHz resistive)
 ![](Error_Std_1kHz.png)
@@ -26,6 +30,12 @@ In this current configuration:
 
 ### Accuracy and noise (100 kHz resistive)
 ![](Error_Std_100kHz.png)
+
+### Accuracy and noise (10 kHz Capacitors)
+![](Capacitance_Error_10kHz.png)
+
+* It seems one can expect about 1% accuracy between 10 p to 0.1 mF. 
+* The point indicating 0.01% accuracy is probably spurious. Some random errors happened to offset each others. 
 
 
 
@@ -41,13 +51,13 @@ The current through the DUT is (ideally) the same as the current in the shunt re
 
 # Source of Errors
 
-The precision of the circuit is dominated by the shunt resistors and gain accuracy of the INAs. Error in any of these will linearly cause an error in the calculated impedance. If they are stable over time, they can conceivably be calibrated with a high tolerance (e.g. 0.01%) reference resistor, though that has not been included in the software. 
+The precision of the circuit is dominated by the shunt resistors and gain accuracy of the INAs. Error in any of these will linearly cause an error in the calculated impedance. If they are stable over time, they can conceivably be calibrated with a high tolerance (e.g. 0.01%) reference resistor.
 
 If the shunt resistor is off by some value, *X* (where 1.01 would be 1% higher than nominal), the current would be reported as I<sub>0</sub>**X* where I<sub>0</sub> is the actual current. 
 
 The noise performance of the INAs isn't great, but the FET inputs have extremely low bias currents, and low current noise, which are necessary if high impedance loads are attached. The noise should add an incoherent error, so by averaging for longer, this can be mitigated. 
 
-The parasitic elements can be accounted for by taking an open/short measurement. See sect. 4.3.2 in the impedance measurement handbook
+The parasitic elements can be accounted for by taking an open/short/load measurement. See sect. 4.3.2 in the impedance measurement handbook
 
 # Operation instructions
 ## Setup
@@ -90,6 +100,9 @@ Set the series resistor before the load (R9/24) to the same value as the shunt r
 
 * **UseCorrection:** enables the short/open compensation values. Typically set to TRUE (green illuminated)
 
+* **RLoad:** This is the actual value of the load compensation resistor that one may use to calibrate gain errors of the system. 
+
+* **RLoad_Meas:** This is the measured value of that load. To acquire this value, set RLoad and RLoad_Meas to 0 and then measure the known load and set this and the RLoad by typing in the appropriate values.
 
 ## Calibration
 ![](OpenShortComp_Aug2022.png)
@@ -137,6 +150,9 @@ This is a frequency sweep of a solenoid (~1 mm diameter) wound on a copper tube 
 
 ## Resonant L-C
 ![](Sweep_ResLoad.png)
+
+## Notch filter input
+![](NotchFiltSweep.png)
 
 
 

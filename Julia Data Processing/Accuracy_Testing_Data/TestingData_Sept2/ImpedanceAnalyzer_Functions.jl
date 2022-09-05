@@ -109,3 +109,10 @@ function TmpUnpackStatsRead()
     
    
 end
+
+function Cp_Q_2ComplexZ(Cp,Q,f)
+    B = 2*pi*f*Cp*1im
+    G = abs(B)/Q
+    Z = 1/(B+G)
+    return Z
+end
