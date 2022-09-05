@@ -18,8 +18,18 @@ In this current configuration:
 
 ![](FrontPage_Aug2022.png)
 
+### Accuracy and noise (1 kHz resistive)
+![](Error_Std_1kHz.png)
 
-TODO: Accuracy plot
+### Accuracy and noise (10 kHz resistive)
+![](Error_Std_10kHz.png)
+
+### Accuracy and noise (100 kHz resistive)
+![](Error_Std_100kHz.png)
+
+
+
+
 # Operating Principle
 This circuit uses the "auto-balancing bridge" technique. If you are curious/want to play around with the circuit you can see the LTSPICE schematic. 
 
@@ -59,7 +69,7 @@ Set the series resistor before the load (R9/24) to the same value as the shunt r
 * Meta-data array is an array that the user can fill in as desired. It just goes into meta-data as-is. For example, if you are measuring the turns on an inductor vs inductance, you could enter the turn count in this spot and then afterwards when processing the data it would already be saved. 
 
 ![](TestParams.png)
-* **Test Freq:** This is the frequency the impedance is measured at
+* **Test Freq:** This is the measurement frequency for single measurements and stats. It is overwritten for frequency sweeps.
 * **Output Signal Amp:** This is the waveform amplitude the DAQ outputs. If this is too low, SNR is sacrificed, if it is too high, the waveform can clip. Check the debugging cluster to ensure the amplitude of the voltage monitor and current monitor arent clipping (i.e. they are less than 7 V or so)
 * **Sampling time:** Time of acquisition in seconds. Should be long enough for 10 or so periods of the output waveform. More improves SNR. 
 * **Sampling Rate:** Sampling rate in Hz. should be maximum allowable.
@@ -106,6 +116,27 @@ Use the last page to do a single impedance measurement and ensure the load is si
 3) Make sure the BNCs are properly attached
 4) The LEDs should be illuminated
 5) The amplitude should be sufficiently low that it doesn't saturate the inputs/clip
+
+
+# Example applications:
+
+## Litz wire, air-core inductor
+![](Sweep_LitzInductor.png)
+* The impedance is exactly as expected here for an inductor. Because Litz wire was used, the resistance is not a strong function of frequency. 
+* The slope of the reactance is constant and proportional to frequency.
+
+## Skin and proximity effect on inductor
+![](Sweep_ProximitySkinLoad.png)
+This is a frequency sweep of a solenoid (~1 mm diameter) wound on a copper tube with a wall-thickness of ~1 mm. Quite a lot is happening with this load:
+* Below 50 Hz or so, it is essentially a resistor, the inductive impedance is very small. 
+* At 50-1k Hz, the solenoid's impedance has an increasing real component and decreasing inductance (decreasing slope of imag.). This occurs as the inductor couples more strongly into the copper tube. The inductance decreases because the magnetic field in the center of the tube is decreasing as the wall effectively shields it. 
+* Between 1k and 10k Hz the resistance nearly plateaus and the inductance starts rising proportionally to frequency. Presumably at this point, the skin depth of the copper tube has been met, so the magnetic fields are not significantly penetrating to the center of the tube. 
+* Above 10 kHz the skin depth of the wire is being reached and the AC-resistance is increasing as the effective copper area for current to flow in decreases.
+
+
+
+## Resonant L-C
+![](Sweep_ResLoad.png)
 
 
 
