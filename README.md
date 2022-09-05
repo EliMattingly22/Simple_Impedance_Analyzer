@@ -39,6 +39,8 @@ In this current configuration:
 
 
 
+# PCB
+Use V2 rev B. V3 has not been tested/built. it is still in design phase. Perhaps it should just be in a separate brach of Github. Designed in KiCAD v6.
 
 # Operating Principle
 This circuit uses the "auto-balancing bridge" technique. If you are curious/want to play around with the circuit you can see the LTSPICE schematic. 
@@ -154,6 +156,15 @@ This is a frequency sweep of a solenoid (~1 mm diameter) wound on a copper tube 
 ## Notch filter input
 ![](NotchFiltSweep.png)
 
+
+# Thoughts for improvement
+* Make the shunt resistor digitally selectable
+* Build a microcontroller-based interface for increased portability
+* Improve system accuracy for high impedance loads
+* Improve system accuracy for high frequencies
+* Modify it such that it uses only one amplifier for both VMon and IMon and a relay to select which one. 
+* Replace INA121 with a JFET INA (e.g. 3 opamp configuration)
+* Implement transformer test jig
 
 
 
