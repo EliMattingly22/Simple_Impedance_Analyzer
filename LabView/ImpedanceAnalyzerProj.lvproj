@@ -270,6 +270,7 @@
 			</Item>
 			<Item Name="AdjustSamplingTime.vi" Type="VI" URL="../AdjustSamplingTime.vi"/>
 			<Item Name="LCR_OpenShortCompensation.vi" Type="VI" URL="../LCR_OpenShortCompensation.vi"/>
+			<Item Name="LCR_OpenShortLoadCompensation.vi" Type="VI" URL="../LCR_OpenShortLoadCompensation.vi"/>
 			<Item Name="Linearly Spaced Array 2012 NIVerified.vi" Type="VI" URL="../LabView_V20/ImpedanceAnalyzerProj Folder/Users/MPI/Documents/GitHub/LabviewGUI/waveform_generation/Linearly Spaced Array 2012 NIVerified.vi"/>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
 			<Item Name="Make_file_path.vi" Type="VI" URL="../Make_file_path.vi"/>
@@ -278,6 +279,7 @@
 			</Item>
 			<Item Name="Pick_Freq.vi" Type="VI" URL="../Pick_Freq.vi"/>
 			<Item Name="Stats_File_Name_String.vi" Type="VI" URL="../Stats_File_Name_String.vi"/>
+			<Item Name="Sweep_File_Name_String.vi" Type="VI" URL="../Sweep_File_Name_String.vi"/>
 			<Item Name="ZMatrix2StatsCluster.vi" Type="VI" URL="../ZMatrix2StatsCluster.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build">
