@@ -74,32 +74,32 @@
         )
       )
     )
-    (symbol "Amplifier_Operational:LM358" (pin_names (offset 0.127)) (in_bom yes) (on_board yes)
+    (symbol "Amplifier_Operational:ADA4075-2" (pin_names (offset 0.127)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (id 0) (at 0 5.08 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
-      (property "Value" "LM358" (id 1) (at 0 -5.08 0)
+      (property "Value" "ADA4075-2" (id 1) (at 0 -5.08 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
       (property "Footprint" "" (id 2) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "Datasheet" "http://www.ti.com/lit/ds/symlink/lm2904-n.pdf" (id 3) (at 0 0 0)
+      (property "Datasheet" "https://www.analog.com/static/imported-files/data_sheets/ADA4075-2.pdf" (id 3) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
       (property "ki_locked" "" (id 4) (at 0 0 0)
         (effects (font (size 1.27 1.27)))
       )
-      (property "ki_keywords" "dual opamp" (id 5) (at 0 0 0)
+      (property "ki_keywords" "dual low-power opamp" (id 5) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "ki_description" "Low-Power, Dual Operational Amplifiers, DIP-8/SOIC-8/TO-99-8" (id 6) (at 0 0 0)
+      (property "ki_description" "Ultralow Noise Amplifier at Lower Power, SOIC-8/LFCSP-8" (id 6) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
       (property "ki_fp_filters" "SOIC*3.9x4.9mm*P1.27mm* DIP*W7.62mm* TO*99* OnSemi*Micro8* TSSOP*3x3mm*P0.65mm* TSSOP*4.4x3mm*P0.65mm* MSOP*3x3mm*P0.65mm* SSOP*3.9x4.9mm*P0.635mm* LFCSP*2x2mm*P0.5mm* *SIP* SOIC*5.3x6.2mm*P1.27mm*" (id 7) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "LM358_1_1"
+      (symbol "ADA4075-2_1_1"
         (polyline
           (pts
             (xy -5.08 5.08)
@@ -123,7 +123,7 @@
           (number "3" (effects (font (size 1.27 1.27))))
         )
       )
-      (symbol "LM358_2_1"
+      (symbol "ADA4075-2_2_1"
         (polyline
           (pts
             (xy -5.08 5.08)
@@ -147,7 +147,7 @@
           (number "7" (effects (font (size 1.27 1.27))))
         )
       )
-      (symbol "LM358_3_1"
+      (symbol "ADA4075-2_3_1"
         (pin power_in line (at -2.54 -7.62 90) (length 3.81)
           (name "V-" (effects (font (size 1.27 1.27))))
           (number "4" (effects (font (size 1.27 1.27))))
@@ -372,11 +372,11 @@
         )
       )
     )
-    (symbol "power:+5VP" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+    (symbol "power:+12V" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "#PWR" (id 0) (at 0 -3.81 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "Value" "+5VP" (id 1) (at 0 3.556 0)
+      (property "Value" "+12V" (id 1) (at 0 3.556 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "" (id 2) (at 0 0 0)
@@ -388,10 +388,10 @@
       (property "ki_keywords" "power-flag" (id 4) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "ki_description" "Power symbol creates a global label with name \"+5VP\"" (id 5) (at 0 0 0)
+      (property "ki_description" "Power symbol creates a global label with name \"+12V\"" (id 5) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "+5VP_0_1"
+      (symbol "+12V_0_1"
         (polyline
           (pts
             (xy -0.762 1.27)
@@ -417,18 +417,18 @@
           (fill (type none))
         )
       )
-      (symbol "+5VP_1_1"
+      (symbol "+12V_1_1"
         (pin power_in line (at 0 0 90) (length 0) hide
-          (name "+5VP" (effects (font (size 1.27 1.27))))
+          (name "+12V" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
         )
       )
     )
-    (symbol "power:-5V" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+    (symbol "power:-12V" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "#PWR" (id 0) (at 0 2.54 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "Value" "-5V" (id 1) (at 0 3.81 0)
+      (property "Value" "-12V" (id 1) (at 0 3.81 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "" (id 2) (at 0 0 0)
@@ -440,16 +440,16 @@
       (property "ki_keywords" "power-flag" (id 4) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "ki_description" "Power symbol creates a global label with name \"-5V\"" (id 5) (at 0 0 0)
+      (property "ki_description" "Power symbol creates a global label with name \"-12V\"" (id 5) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "-5V_0_0"
+      (symbol "-12V_0_0"
         (pin power_in line (at 0 0 90) (length 0) hide
-          (name "-5V" (effects (font (size 1.27 1.27))))
+          (name "-12V" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
         )
       )
-      (symbol "-5V_0_1"
+      (symbol "-12V_0_1"
         (polyline
           (pts
             (xy 0 0)
@@ -858,13 +858,13 @@
     (pin "2" (uuid 8d58bc20-4721-47fa-b1a7-58d2cf8e04a1))
   )
 
-  (symbol (lib_id "power:-5V") (at 190.5 114.3 0) (mirror x) (unit 1)
+  (symbol (lib_id "power:-12V") (at 190.5 114.3 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 4571f35e-c3b3-49a4-895b-b6abdcc57b77)
-    (property "Reference" "#PWR0176" (id 0) (at 190.5 116.84 0)
+    (property "Reference" "#PWR0164" (id 0) (at 190.5 116.84 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "-5V" (id 1) (at 190.881 118.6942 0))
+    (property "Value" "-12V" (id 1) (at 190.5 118.11 0))
     (property "Footprint" "" (id 2) (at 190.5 114.3 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -964,20 +964,27 @@
     (pin "2" (uuid f9414c4c-3193-4351-8973-10031a10c1b4))
   )
 
-  (symbol (lib_id "Amplifier_Operational:LM358") (at 88.9 52.07 0) (unit 1)
+  (symbol (lib_id "Amplifier_Operational:ADA4075-2") (at 88.9 52.07 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid c96b3e91-b07e-452e-97ea-45683a12e013)
     (property "Reference" "U1" (id 0) (at 88.9 42.7482 0))
-    (property "Value" "AD8022" (id 1) (at 88.9 45.0596 0))
+    (property "Value" "ADA4075-2" (id 1) (at 88.9 57.15 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
     (property "Footprint" "Package_SO:SO-8_3.9x4.9mm_P1.27mm" (id 2) (at 88.9 52.07 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "http://www.ti.com/lit/ds/symlink/lm2904-n.pdf" (id 3) (at 88.9 52.07 0)
+    (property "Datasheet" "https://www.analog.com/static/imported-files/data_sheets/ADA4075-2.pdf" (id 3) (at 88.9 52.07 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 566cab8b-d996-46d7-8728-4c99c635665a))
     (pin "2" (uuid 023ba9c6-3a01-47ff-9da5-5387f82c5c75))
     (pin "3" (uuid 99d36294-18b1-411d-863f-f7c31a354ef3))
+    (pin "5" (uuid 9ecde034-76c9-4dbc-a166-d9a077e661b2))
+    (pin "6" (uuid c4158225-4e66-48b2-847b-d8d02399c31b))
+    (pin "7" (uuid 7f333835-7656-4652-8d74-c9d9f625cbbb))
+    (pin "4" (uuid 822414e8-dffc-4b39-bcbb-cca4ba789862))
+    (pin "8" (uuid 84ca356d-aa69-4045-b18a-72a6aa7645d5))
   )
 
   (symbol (lib_id "Device:R") (at 124.46 50.8 270) (unit 1)
@@ -995,13 +1002,13 @@
     (pin "2" (uuid d316d518-bfa9-4213-8d2f-c5497a2a6d2f))
   )
 
-  (symbol (lib_id "power:+5VP") (at 190.5 88.9 0) (mirror y) (unit 1)
+  (symbol (lib_id "power:+12V") (at 190.5 88.9 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid e19e796f-2282-49d8-90e0-4160e5082807)
-    (property "Reference" "#PWR0178" (id 0) (at 190.5 92.71 0)
+    (property "Reference" "#PWR0165" (id 0) (at 190.5 92.71 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "+5VP" (id 1) (at 190.119 84.5058 0))
+    (property "Value" "+12V" (id 1) (at 190.5 85.344 0))
     (property "Footprint" "" (id 2) (at 190.5 88.9 0)
       (effects (font (size 1.27 1.27)) hide)
     )
